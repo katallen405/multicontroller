@@ -3,6 +3,8 @@
 # Kat Allen 2025
 # kat.allen@tufts.edu
 
+
+# imports copied from hapticcomm -- check that we actually need these
 from hapticcomm import waypointgathering
 from boto3 import Session
 from botocore.exceptions import BotoCoreError, ClientError
@@ -12,17 +14,16 @@ import sys
 import subprocess
 from tempfile import gettempdir
 import csv
-import armpy.arm
-import armpy.gripper
-import pickle
-# stuff for speech
 import rospy
 import smach
 import smach_ros
 import actionlib
 import sys
 
-# A multimodal controller for close-contact HRI with a robot arm
+# things we definitely need
+from arm_specific import arm, gripper
+
+# A multimodal controller for close-contact HRI with an abstracted robot arm
 
 class multimodal_controller():
     def __init__(self, arm, gripper):
