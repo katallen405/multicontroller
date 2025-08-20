@@ -18,9 +18,6 @@ z_eyes =
 # publish relations to world frame
 #https://docs.ros.org/en/humble/Tutorials/Intermediate/Tf2/Writing-A-Tf2-Static-Broadcaster-Py.html
 
-
-
-
 # EE position xyz needs to be inside a cone bounded by:
 
 #z_heart + offset > z 
@@ -42,6 +39,6 @@ z_eyes =
 #l,m,n are positive or negative whole numbers 0->4
 
 
-
-
+# Collision prevention - hard constraints
+# 
 
