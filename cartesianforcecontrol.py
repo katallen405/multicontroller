@@ -6,6 +6,7 @@ from tf.transformations import quaternion_from_euler
 import kinova_msgs.srv
 import kinova_demo.robot_control_modules as rcm
 import rospy
+import numpy as np
 prefix = 'j2s7s300_'
 nbJoints = 7
 interactive = True
@@ -13,7 +14,7 @@ duration_sec = 10
 
 def cartesianpositionstart(): # this kind of works but the cartesian solver
     # is not very good
-
+    initialpositionentered = False
     # keyboard entry of initial position and orientation
     while initialpositionentered == False:
         print("Enter initial end effector position as x,y,z or enter to use `deskside' (-0.178,-0.674,0.171)")
@@ -54,9 +55,14 @@ if __name__ == '__main__':
     pass #use defaults from above
   try:
     rospy.init_node('cartesian_force_mode',log_level=rospy.DEBUG)
-    rcm.homeRobot(prefix)
-    initialpositionentered = False
+    print("homing robot, no collision scene awareness")
+    rcm.homeRobot(prefix)  #home robot for cartesian control to work
+    help_position = [1.1344166095289108, 1.9797486806263742, 3.382395413038649, 1.2493353395171924, -1.9042559200478435, 1.7800001472777442, 3.231052761979408]
+    help_degrees = np.degrees(help_position)
+
+    rcm.joint_position_client(help_degrees, prefix)
     
+    rcm.
 
 
 
